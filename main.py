@@ -1,8 +1,8 @@
 from flask import Flask, request
 from flask_restful import reqparse, abort, Api, Resource
-from random import randint
+import random
 
-nummer = randint(0, 10000)
+nummer = random.randint(0, 10000)
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,7 +15,32 @@ class getClasses(Resource):  # /get
                 'text': "Cloud Infra ftw"
                 }
 
+def random_gen(max):  # fills a list with random numers of indexes of which the total is filled in above
+    gekozen_index = set([])
+    vol_lijst_grott = len(vol_lijst)
+    while len(gekozen_index) < max:
+        gekozen_index.add(random.randint(0, vol_lijst_grott))
+    return gekozen_index
+
+def gekozen_nummers_refr():
+    gekozen_nummers = []
+    for j in random_gen(aantal_nums):
+        gekozen_nummers.append(vol_lijst[j])
+    print(gekozen_nummers)
+
+aantal_nums = 6
+vol_lijst = []
+
+with open('Alle liedjes - Blad1.csv', 'r', encoding='utf8') as f:  # maakt een lijst van alle nummers
+    for lijnen in f.readlines():
+        temp = lijnen.strip('\n').split(',')
+        vol_lijst.append(temp[0])
+    vol_lijst.pop(0)
+
+gekozen_nummers_refr()
 api.add_resource(getClasses, '/get')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1')
+    app.run(debug=True, host='127.0.0.1', port'8080')
+
+

@@ -12,7 +12,7 @@ class getClasses(Resource):  # /get
     def get(self):
         # returnt containernummer en een leuke tekst
         return {'container': nummer,
-                'text': "Cloud Infra ftw"
+                'nummers': gekozen_nummers_refr()
                 }
 
 def random_gen(max):  # fills a list with random numers of indexes of which the total is filled in above
@@ -26,7 +26,7 @@ def gekozen_nummers_refr():
     gekozen_nummers = []
     for j in random_gen(aantal_nums):
         gekozen_nummers.append(vol_lijst[j])
-    print(gekozen_nummers)
+    return gekozen_nummers
 
 aantal_nums = 6
 vol_lijst = []
@@ -37,7 +37,6 @@ with open('Alle liedjes - Blad1.csv', 'r', encoding='utf8') as f:  # maakt een l
         vol_lijst.append(temp[0])
     vol_lijst.pop(0)
 
-gekozen_nummers_refr()
 api.add_resource(getClasses, '/get')
 
 if __name__ == '__main__':

@@ -40,6 +40,6 @@ with open('Alle liedjes - Blad1.csv', 'r', encoding='utf8') as f:  # maakt een l
 api.add_resource(getClasses, '/get')
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port='8080')
+    app.run(debug=True, host='0.0.0.0', port='8080')
 
 

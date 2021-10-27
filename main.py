@@ -7,6 +7,7 @@ nummer = random.randint(0, 10000)
 app = Flask(__name__)
 api = Api(app)
 parser = reqparse.RequestParser()
+alle_nummers = 'Alle liedjes - Blad1.csv'
 
 class getClasses(Resource):  # /get
     def get(self):
@@ -31,7 +32,7 @@ def gekozen_nummers_refr():
 aantal_nums = 6
 vol_lijst = []
 
-with open('Alle liedjes - Blad1.csv', 'r', encoding='utf8') as f:  # maakt een lijst van alle nummers
+with open(alle_nummers, 'r', encoding='utf8') as f:  # maakt een lijst van alle nummers
     for lijnen in f.readlines():
         temp = lijnen.strip('\n').split(',')
         vol_lijst.append(temp[0])

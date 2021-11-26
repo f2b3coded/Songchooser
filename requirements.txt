@@ -18,5 +18,5 @@ requests==2.25.1
 six==1.15.0
 unicodecsv==0.14.1
 Unidecode==1.2.0
-urllib3==1.26.4
+urllib3==1.26.5
 Werkzeug==1.0.1
